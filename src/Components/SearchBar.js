@@ -78,6 +78,7 @@ const SearchBar = (props) => {
             ableToSearch ? "Enter search keywords..." : "Select search criterea"
           }
           value={keyWord}
+          disabled={!ableToSearch}
           onChange={handleSearchBarChange}
         />
         {ableToSearch ? (
@@ -85,7 +86,6 @@ const SearchBar = (props) => {
           <Link to="/">
             <Button
               color="secondary"
-              
               onClick={() => clearSearch()}
             >
               X

@@ -1,6 +1,4 @@
 import React, {useState} from "react";
-import { ApolloProvider } from "@apollo/client";
-import client from "./Apollo/client";
 import "./App.css";
 import HeadImage from "./Components/HeadImage";
 import SearchBar from "./Components/SearchBar";
@@ -15,7 +13,7 @@ function App() {
 
 
   return (
-    <ApolloProvider client={client}>
+
       <Router>
         <div className="mx-5" >
           <HeadImage />
@@ -24,7 +22,6 @@ function App() {
           <Footer/>      
         </div>
       </Router>
-    </ApolloProvider>
 
   );
 }

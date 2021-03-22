@@ -1,20 +1,12 @@
 import React, { useState } from "react";
-//import { useQuery, gql } from "@apollo/client";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { Switch, Route } from "react-router-dom";
 
 import { CHARACTER, EPISODE, LOCATION } from "../../Constants";
+import { GetQueryInfo } from "../../Apollo/Querys";
 
-import CharacterCard from "../Cards/CharacterCard";
-import LocationCard from "../Cards/LocationCard";
-import EpisodeCard from "../Cards/EpisodeCard";
-import WellcomePageCharCard from "../Cards/WellcomePageCharCard";
-
-import CharacterModalCard from "../ModalCardsComponents/CharacterModalCard";
-import WellcomeModalCard from "../ModalCardsComponents/WellcomeModalCard";
-import EpisodeModalCard from "../ModalCardsComponents/EpisodeModalCard";
-import LocationModalCard from "../ModalCardsComponents/LocationModalCard";
-import GetQueryInfo from "../../Apollo/Querys";
+import ErrorMessage from "./ErrorMessage";
+import Card from "./Card";
+import ModalCard from "./ModalCard";
 
 const CardGroup = (props) => {
   const initialData = { arrayResults: [], nextPage: 1 };
@@ -26,122 +18,12 @@ const CardGroup = (props) => {
   const { searchBarState } = props;
   const [searchingDataState, setSearchingDataState] = useState({ keyWord: "" });
 
-  /*const WELLCOMEINFO_QUERY = gql`
-  query GetWellcomeInfo {
-    characters (page:${fetchData.nextPage}) {
-      info{
-        next
-        prev
-      }
-        results {
-          id
-          name
-          image
-          location {
-            dimension
-            name
-          }
-          episode {
-            id
-            name
-            episode
-          }
-        }
-      }
-    }
-  `;
+  const { data, error } = GetQueryInfo(
+    fetchData.nextPage,
+    searchBarState.criterea,
+    searchingDataState.keyWord
+  );
 
-  const CHARACTERS_QUERY = gql`
-    query GetCharacters {
-      characters (page: ${fetchData.nextPage}, filter: {name: "${searchingDataState.keyWord}", type: ""}) {
-        info{
-          next
-          prev
-          count
-          pages
-          }
-    
-        results {
-          id
-          name 
-          image
-          type
-          gender
-          species
-          
-        }
-      }
-    }
-  `;
-
-  const EPISODES_QUERY = gql`
-    query GetEpisodes {
-      episodes(page: ${fetchData.nextPage}, filter: { name: "${searchingDataState.keyWord}" }) {
-        info {
-          next
-          prev
-          count
-          pages
-        }
-        results {
-          id
-          name
-          created
-          episode
-          characters {
-            id
-            name
-          }
-        }
-      }
-    }
-  `;
-
-  const LOCATIONS_QUERY = gql`
-    query GetLocations {
-      locations(page: ${fetchData.nextPage}, filter: { name: "${searchingDataState.keyWord}", type: "" }) {
-        info {
-          next
-          prev
-          count
-          pages
-        }
-        results {
-          id
-          name
-          type
-          dimension
-          residents {
-            id
-            name
-          }
-        }
-      }
-    }
-  `;
-
-  let currentQuery;
-
-  switch (searchBarState.criterea) {
-    case CHARACTER:
-      currentQuery = CHARACTERS_QUERY;
-      break;
-    case LOCATION:
-      currentQuery = LOCATIONS_QUERY;
-      break;
-    case EPISODE:
-      currentQuery = EPISODES_QUERY;
-      break;
-    default:
-      currentQuery = WELLCOMEINFO_QUERY;
-      break;
-  }
-
-  const { error, data } = useQuery(currentQuery);*/
-
-  const {data, error} = GetQueryInfo(fetchData.nextPage, searchBarState.criterea, searchingDataState.keyWord)
-
-  
   if (
     searchBarState.keyWord !== searchingDataState.keyWord &&
     searchBarState.keyWord.length >= 3
@@ -221,21 +103,13 @@ const CardGroup = (props) => {
     setModalData({ ...modalData, isOpen: false, cardInfo: null });
 
   if (error) {
-    return (
-      <h4 className="text-center my-5">
-        {error.message === "404: Not Found"
-          ? "¡No results for that keyword!"
-          : "Error: " + error.message}
-      </h4>
-    );
+    return <ErrorMessage error={error} />;
   }
 
   return (
     <>
       <h1 className="text-center my-4">
-        {searchBarState.criterea === null
-          ? "Meet the Characters"
-          : null}
+        {searchBarState.criterea === null ? "Meet the Characters" : null}
       </h1>
       <InfiniteScroll
         dataLength={fetchData.arrayResults.length}
@@ -253,58 +127,21 @@ const CardGroup = (props) => {
           <h3 className="text-center my-5">You have seen them all!</h3>
         }
       >
+        
         <div className="row row-cols-1 row-cols-md-4 g-4 ">
           {fetchData.arrayResults.map((item) => (
-            <Switch key={item.id}>
-              <Route path="/Characters">
-                <CharacterCard item={item} openModalCard={openModalCard} />
-              </Route>
-              <Route path="/Locations">
-                <LocationCard item={item} openModalCard={openModalCard} />
-              </Route>
-              <Route path="/Episodes">
-                <EpisodeCard item={item} openModalCard={openModalCard} />
-              </Route>
-              <Route path="/">
-                <WellcomePageCharCard
-                  item={item}
-                  openModalCard={openModalCard}
-                />
-              </Route>
-            </Switch>
+            <Card key={item.id} item={item} openModalCard={openModalCard} />
           ))}
         </div>
+      
       </InfiniteScroll>
-      <Switch>
-        <Route path="/Characters">
-          <CharacterModalCard
-            isOpen={modalData.isOpen}
-            closeModal={closeModal}
-            cardInfo={modalData.cardInfo}
-          />
-        </Route>
-        <Route path="/Locations">
-          <LocationModalCard
-            isOpen={modalData.isOpen}
-            closeModal={closeModal}
-            cardInfo={modalData.cardInfo}
-          />
-        </Route>
-        <Route path="/Episodes">
-          <EpisodeModalCard
-            isOpen={modalData.isOpen}
-            closeModal={closeModal}
-            cardInfo={modalData.cardInfo}
-          />
-        </Route>
-        <Route path="/">
-          <WellcomeModalCard
-            isOpen={modalData.isOpen}
-            closeModal={closeModal}
-            cardInfo={modalData.cardInfo}
-          />
-        </Route>
-      </Switch>
+      
+      <ModalCard
+        isOpen={modalData.isOpen}
+        closeModal={closeModal}
+        cardInfo={modalData.cardInfo}
+      />
+    
     </>
   );
 };

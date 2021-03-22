@@ -7,7 +7,7 @@ const LocationCard = (prop) => {
     <div key={item.id} className="col my-3">
       <div
         className="card h-100 "
-        style={{ width: 100 + "%", cursor: "pointer" }}
+        style={{ cursor: "pointer" }}
         onClick={() => openModalCard(item)}
       >
         <div className="card-body">

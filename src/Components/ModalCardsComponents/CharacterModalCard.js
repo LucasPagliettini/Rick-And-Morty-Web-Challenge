@@ -11,7 +11,7 @@ const CharacterModalCard = (props) => {
         <Modal size="sm" isOpen={isOpen} toggle={closeModal}>
           <ModalHeader toggle={closeModal}>Character Info</ModalHeader>
           <ModalBody>
-            <div className="card h-100" style={{ width: 100 + "%" }}>
+            <div className="card h-100">
               <img src={cardInfo.image} className="card-img-top" alt="..." />
               <div className="card-body">
                 <h5 className="card-title">

@@ -12,7 +12,7 @@ const LocationModalCard = (props) => {
       <Modal size="sm" isOpen={isOpen} toggle={closeModal}>
         <ModalHeader toggle={closeModal}>Location Info</ModalHeader>
         <ModalBody>
-          <div className="card h-100" style={{ width: 100 + "%" }}>
+          <div className="card h-100">
             <div className="card-body">
               <h5>
                 {cardInfo.id} - {cardInfo.name}

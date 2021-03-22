@@ -2,7 +2,7 @@ import { useQuery, gql } from "@apollo/client";
 import { CHARACTER, EPISODE, LOCATION } from "../Constants";
 
 
-const GetQueryInfo = (nextPage, searchCriterea, keyWord) => {
+export const GetQueryInfo = (nextPage, searchCriterea, keyWord) => {
   const WELLCOMEINFO_QUERY = gql`
   query GetWellcomeInfo {
     characters (page:${nextPage}) {
@@ -118,4 +118,4 @@ const GetQueryInfo = (nextPage, searchCriterea, keyWord) => {
   return { error, data };
 };
 
-export default GetQueryInfo
+
