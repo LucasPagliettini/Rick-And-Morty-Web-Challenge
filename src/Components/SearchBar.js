@@ -74,24 +74,25 @@ const SearchBar = (props) => {
           </DropdownMenu>
         </InputGroupButtonDropdown>
         <Input
-          disabled={!ableToSearch}
           placeholder={
             ableToSearch ? "Enter search keywords..." : "Select search criterea"
           }
           value={keyWord}
           onChange={handleSearchBarChange}
         />
+        {ableToSearch ? (
         <InputGroupAddon addonType="append">
           <Link to="/">
             <Button
               color="secondary"
-              disabled={!ableToSearch}
+              
               onClick={() => clearSearch()}
             >
               X
             </Button>
           </Link>
-        </InputGroupAddon>
+        </InputGroupAddon>) :
+        null}
       </InputGroup>
       <Collapse isOpen={fadeIn} tag="h6" className="mt-2">
         <div className="alert alert-warning" role="alert">

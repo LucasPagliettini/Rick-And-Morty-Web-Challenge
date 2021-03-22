@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useQuery, gql } from "@apollo/client";
+//import { useQuery, gql } from "@apollo/client";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Switch, Route } from "react-router-dom";
 
@@ -14,6 +14,7 @@ import CharacterModalCard from "../ModalCardsComponents/CharacterModalCard";
 import WellcomeModalCard from "../ModalCardsComponents/WellcomeModalCard";
 import EpisodeModalCard from "../ModalCardsComponents/EpisodeModalCard";
 import LocationModalCard from "../ModalCardsComponents/LocationModalCard";
+import GetQueryInfo from "../../Apollo/Querys";
 
 const CardGroup = (props) => {
   const initialData = { arrayResults: [], nextPage: 1 };
@@ -25,9 +26,9 @@ const CardGroup = (props) => {
   const { searchBarState } = props;
   const [searchingDataState, setSearchingDataState] = useState({ keyWord: "" });
 
-  const WELLCOMEINFO_QUERY = gql`
+  /*const WELLCOMEINFO_QUERY = gql`
   query GetWellcomeInfo {
-    characters (page:${fetchData.nextPage}, filter: {name:""}) {
+    characters (page:${fetchData.nextPage}) {
       info{
         next
         prev
@@ -136,8 +137,11 @@ const CardGroup = (props) => {
       break;
   }
 
-  const { error, data } = useQuery(currentQuery);
+  const { error, data } = useQuery(currentQuery);*/
 
+  const {data, error} = GetQueryInfo(fetchData.nextPage, searchBarState.criterea, searchingDataState.keyWord)
+
+  
   if (
     searchBarState.keyWord !== searchingDataState.keyWord &&
     searchBarState.keyWord.length >= 3
@@ -218,11 +222,11 @@ const CardGroup = (props) => {
 
   if (error) {
     return (
-      <h6 className="text-center my-3">
+      <h4 className="text-center my-5">
         {error.message === "404: Not Found"
           ? "¡No results for that keyword!"
           : "Error: " + error.message}
-      </h6>
+      </h4>
     );
   }
 
@@ -231,7 +235,7 @@ const CardGroup = (props) => {
       <h1 className="text-center my-4">
         {searchBarState.criterea === null
           ? "Meet the Characters"
-          : "Search Results..."}
+          : null}
       </h1>
       <InfiniteScroll
         dataLength={fetchData.arrayResults.length}
