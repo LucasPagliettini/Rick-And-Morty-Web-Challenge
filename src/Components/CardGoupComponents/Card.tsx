@@ -1,12 +1,11 @@
-import React from "react";
 import { Switch, Route } from "react-router-dom";
 
 import CharacterCard from "../Cards/CharacterCard";
 import EpisodeCard from "../Cards/EpisodeCard";
 import LocationCard from "../Cards/LocationCard";
-import WellcomePageCharCard from "../Cards/WellcomePageCharCard";
+import WelcomePageCharCard from "../Cards/WelcomePageCharCard";
 
-const Card = (props) => {
+const Card = (props: { item: any; openModalCard: Function }) => {
   const { item, openModalCard } = props;
 
   return (
@@ -21,7 +20,7 @@ const Card = (props) => {
         <EpisodeCard item={item} openModalCard={openModalCard} />
       </Route>
       <Route path="/">
-        <WellcomePageCharCard item={item} openModalCard={openModalCard} />
+        <WelcomePageCharCard item={item} openModalCard={openModalCard} />
       </Route>
     </Switch>
   );

@@ -1,8 +1,11 @@
-import React from "react";
+import { ICharacterItem } from "../../Apollo/Querys";
 
-const CharacterCard = (prop) => {
-  const { item, openModalCard } = prop;
-  
+const CharacterCard = (props: {
+  item: ICharacterItem;
+  openModalCard: Function;
+}) => {
+  const { item, openModalCard } = props;
+
   return (
     <div key={item.id} className="col my-3">
       <div

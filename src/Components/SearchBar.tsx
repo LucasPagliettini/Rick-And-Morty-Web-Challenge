@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   InputGroup,
   InputGroupAddon,
@@ -12,8 +12,12 @@ import {
 } from "reactstrap";
 import { CHARACTER, EPISODE, LOCATION } from "../Constants";
 import { Link } from "react-router-dom";
+import { ISearchBarState } from "../App";
 
-const SearchBar = (props) => {
+const SearchBar = (props: {
+  searchBarState: ISearchBarState;
+  setSearchBarState: Function;
+}) => {
   const { searchBarState, setSearchBarState } = props;
   const { criterea, keyWord } = searchBarState;
 
@@ -23,25 +27,44 @@ const SearchBar = (props) => {
 
   const toggleDropDown = () => setDropdownOpen(!dropdownOpen);
 
-  const enableSearch = (selected) => {
+  /**Method that recive a string that defines the new SearchCriterea
+   * and consecuencetly clear the value of the keyWord SearchBar propiety
+   */
+  const enableSearch = (selected: string) => {
     setAbleToSearch(true);
     setSearchBarState({ ...searchBarState, criterea: selected, keyWord: "" });
   };
 
+  /**Method that clear the searchBarCriterea and the searchKeyWord and
+   * turns into false the value of the ableToSearch state to set the
+   * textArea as "disable" until the user select a new searchCriterea
+   */
   const clearSearch = () => {
     setAbleToSearch(false);
     setSearchBarState({ ...searchBarState, keyWord: "", criterea: null });
     setFadeIn(false);
   };
 
-  const handleSearchBarChange = (e) => {
+  /**Method that handle changes on search textArea updating the
+   * value of keyWord state
+   */
+  const handleSearchBarChange = (e: any) => {
     const value = e.target.value;
     setSearchBarState({ ...searchBarState, keyWord: value });
   };
 
+  /**When selected a searchCriterea and keyword hasn´t reach
+   * 3 letters long, it shows a fade message explaining the
+   * condition
+   */
   if (keyWord.length < 3 && ableToSearch && !fadeIn) {
     setFadeIn(true);
   }
+
+  /**When selected a searchCriterea and keyword reaches
+   * 3 letters long, it hides the fade message explaining the
+   * condition
+   */
   if (keyWord.length >= 3 && ableToSearch && fadeIn) {
     setFadeIn(false);
   }
@@ -82,17 +105,14 @@ const SearchBar = (props) => {
           onChange={handleSearchBarChange}
         />
         {ableToSearch ? (
-        <InputGroupAddon addonType="append">
-          <Link to="/">
-            <Button
-              color="secondary"
-              onClick={() => clearSearch()}
-            >
-              X
-            </Button>
-          </Link>
-        </InputGroupAddon>) :
-        null}
+          <InputGroupAddon addonType="append">
+            <Link to="/">
+              <Button color="secondary" onClick={() => clearSearch()}>
+                X
+              </Button>
+            </Link>
+          </InputGroupAddon>
+        ) : null}
       </InputGroup>
       <Collapse isOpen={fadeIn} tag="h6" className="mt-2">
         <div className="alert alert-warning" role="alert">

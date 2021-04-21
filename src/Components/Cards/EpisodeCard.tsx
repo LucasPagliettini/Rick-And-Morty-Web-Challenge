@@ -1,7 +1,10 @@
-import React from "react";
+import { IEpisodeItem } from "../../Apollo/Querys";
 
-const EpisodeCard = (prop) => {
-  const { item, openModalCard } = prop;
+const EpisodeCard = (props: {
+  item: IEpisodeItem;
+  openModalCard: Function;
+}) => {
+  const { item, openModalCard } = props;
 
   return (
     <div key={item.id} className="col my-3">

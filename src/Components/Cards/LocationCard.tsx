@@ -1,7 +1,10 @@
-import React from "react";
+import { ILocationItem } from "../../Apollo/Querys";
 
-const LocationCard = (prop) => {
-  const { item, openModalCard } = prop;
+const LocationCard = (props: {
+  item: ILocationItem;
+  openModalCard: Function;
+}) => {
+  const { item, openModalCard } = props;
 
   return (
     <div key={item.id} className="col my-3">

@@ -1,7 +1,8 @@
-import React from "react";
-import { Modal, ModalHeader, ModalBody } from "reactstrap";
 
-const CharacterModalCard = (props) => {
+import { Modal, ModalHeader, ModalBody } from "reactstrap";
+import { ICharacterItem } from "../../Apollo/Querys";
+
+const CharacterModalCard = (props: {cardInfo: ICharacterItem, isOpen: boolean, closeModal: any}) => {
   const { cardInfo, isOpen, closeModal } = props;
 
   if (cardInfo === null) return <></>;

@@ -1,7 +1,11 @@
-import React from "react";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
+import { ILocationItem } from "../../Apollo/Querys";
 
-const LocationModalCard = (props) => {
+const LocationModalCard = (props: {
+  cardInfo: ILocationItem;
+  isOpen: boolean;
+  closeModal: any;
+}) => {
   const { cardInfo, isOpen, closeModal } = props;
 
   if (cardInfo === null) return <></>;
