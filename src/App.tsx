@@ -19,7 +19,7 @@ function App() {
 
   return (
     <Router>
-      <div className="mx-5">
+      <div className="mx-2">
         <HeadImage />
         <SearchBar
           searchBarState={searchBarState}
