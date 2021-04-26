@@ -7,7 +7,7 @@ You can also search to find specific information about a character, location or 
 ## Screenshots
 
 ### Welcome Page
-![WelcomePage](.\src\Images\readMeScreenShots\1.WelcomePage.jpg)
+![WelcomePage](.\readMeScreenShots\1.WelcomePage.jpg)
 
 ### Welcome Page Modal Info
 ![WelcomePageModalInfo](.\src\Images\readMeScreenShots\2.WelcomePageModalInfo.jpg)
