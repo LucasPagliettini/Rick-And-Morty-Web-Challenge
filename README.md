@@ -7,25 +7,25 @@ You can also search to find specific information about a character, location or 
 ## Screenshots
 
 ### Welcome Page
-![WelcomePage](.\src\Images\readMeScreenShots\1.WelcomePage.jpg)
+![WelcomePage](src\Images\readMeScreenShots\1.WelcomePage.jpg)
 
 ### Welcome Page Modal Info
-![WelcomePageModalInfo](.\src\Images\readMeScreenShots\2.WelcomePageModalInfo.jpg)
+![WelcomePageModalInfo](src\Images\readMeScreenShots\2.WelcomePageModalInfo.jpg)
 
 ### Search Conditions
 ![SearchConditions](.\src\Images\readMeScreenShots\3.SearchConditions.jpg)
 
 ### Character Search With Modal Info
-![CharacterSearchWithModalInfo](.\src\Images\readMeScreenShots\4.CharacterSearchWithModalInfo.jpg)
+![CharacterSearchWithModalInfo](src\Images\readMeScreenShots\4.CharacterSearchWithModalInfo.jpg)
 
 ### Location Search With Modal Info
-![LocationSearchWithModalInfo](.\src\Images\readMeScreenShots\5.LocationSearchWithModalInfo.jpg)
+![LocationSearchWithModalInfo](src\Images\readMeScreenShots\5.LocationSearchWithModalInfo.jpg)
 
 ### Episode Search With Modal Info
-![EpisodeSearchWithModal](.\src\Images\readMeScreenShots\6.EpisodeSearchWithModal.jpg)
+![EpisodeSearchWithModal](src\Images\readMeScreenShots\6.EpisodeSearchWithModal.jpg)
 
 ### No Results Found
-![NoResultsFound](.\src\Images\readMeScreenShots\7.NoResultsFound.jpg)
+![NoResultsFound](src\Images\readMeScreenShots\7.NoResultsFound.jpg)
 
 
 ## Tools Used:
