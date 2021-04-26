@@ -107,8 +107,8 @@ const CardGroup = (props: { searchBarState: ISearchBarState }) => {
     }
   };
 
-  /*When the user selected any SearchCriterea but no keyWord with at least 3 leters 
-  the app show empty results area. Instead it will execute the first fetch to the 
+  /*When the user selected any SearchCriterea but no keyWord with at least 3 leters, 
+  the app shows empty results area. Instead it will execute the first fetch to the 
   paginated endpoint to show the results of the first page. Afterwards while the
   user scrollDown, InfiniteScroll component will fetch data from posibles following pages
   */
@@ -138,7 +138,8 @@ const CardGroup = (props: { searchBarState: ISearchBarState }) => {
   return (
     <>
       <h1 className="text-center my-4">
-        {searchBarState.criterea === null ? "Meet the Characters" : null}
+        {searchBarState.criterea === null ? "Meet the Characters" : fetchData.arrayResults.length>0 ? 
+        <h3>Click on them to see more details...</h3> : null}
       </h1>
       <InfiniteScroll
         dataLength={fetchData.arrayResults.length}
