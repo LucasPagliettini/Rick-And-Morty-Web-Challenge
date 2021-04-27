@@ -1,7 +1,8 @@
-import React from "react";
-import { Modal, ModalHeader, ModalBody } from "reactstrap";
 
-const CharacterModalCard = (props) => {
+import { Modal, ModalHeader, ModalBody } from "reactstrap";
+import { ICharacterItem } from "../../Apollo/Querys";
+
+const CharacterModalCard = (props: {cardInfo: ICharacterItem, isOpen: boolean, closeModal: any}) => {
   const { cardInfo, isOpen, closeModal } = props;
 
   if (cardInfo === null) return <></>;
@@ -11,7 +12,7 @@ const CharacterModalCard = (props) => {
         <Modal size="sm" isOpen={isOpen} toggle={closeModal}>
           <ModalHeader toggle={closeModal}>Character Info</ModalHeader>
           <ModalBody>
-            <div className="card h-100" style={{ width: 100 + "%" }}>
+            <div className="card h-100">
               <img src={cardInfo.image} className="card-img-top" alt="..." />
               <div className="card-body">
                 <h5 className="card-title">

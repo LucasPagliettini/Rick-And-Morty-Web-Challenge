@@ -1,7 +1,11 @@
-import React from "react";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
+import { IEpisodeItem } from "../../Apollo/Querys";
 
-const EpisodeModalCard = (props) => {
+const EpisodeModalCard = (props: {
+  cardInfo: IEpisodeItem;
+  isOpen: boolean;
+  closeModal: any;
+}) => {
   const { cardInfo, isOpen, closeModal } = props;
 
   if (cardInfo === null) return <></>;
@@ -12,7 +16,7 @@ const EpisodeModalCard = (props) => {
       <Modal size="sm" isOpen={isOpen} toggle={closeModal}>
         <ModalHeader toggle={closeModal}>Episode Info</ModalHeader>
         <ModalBody>
-          <div className="card h-100" style={{ width: 100 + "%" }}>
+          <div className="card h-100">
             <div className="card-body">
               <h5 className="card-title">
                 {cardInfo.id} - {cardInfo.name}

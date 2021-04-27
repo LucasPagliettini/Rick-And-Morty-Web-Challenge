@@ -1,13 +1,16 @@
-import React from "react";
+import { ICharacterItem } from "../../Apollo/Querys";
 
-const CharacterCard = (prop) => {
-  const { item, openModalCard } = prop;
-  
+const CharacterCard = (props: {
+  item: ICharacterItem;
+  openModalCard: Function;
+}) => {
+  const { item, openModalCard } = props;
+
   return (
     <div key={item.id} className="col my-3">
       <div
         className="card h-100"
-        style={{ width: 100 + "%", cursor: "pointer" }}
+        style={{ cursor: "pointer" }}
         onClick={() => openModalCard(item)}
       >
         <img src={item.image} className="card-img-top" alt="..." />

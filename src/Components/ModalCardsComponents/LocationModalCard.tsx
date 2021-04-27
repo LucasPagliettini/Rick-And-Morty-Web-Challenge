@@ -1,7 +1,11 @@
-import React from "react";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
+import { ILocationItem } from "../../Apollo/Querys";
 
-const LocationModalCard = (props) => {
+const LocationModalCard = (props: {
+  cardInfo: ILocationItem;
+  isOpen: boolean;
+  closeModal: any;
+}) => {
   const { cardInfo, isOpen, closeModal } = props;
 
   if (cardInfo === null) return <></>;
@@ -12,7 +16,7 @@ const LocationModalCard = (props) => {
       <Modal size="sm" isOpen={isOpen} toggle={closeModal}>
         <ModalHeader toggle={closeModal}>Location Info</ModalHeader>
         <ModalBody>
-          <div className="card h-100" style={{ width: 100 + "%" }}>
+          <div className="card h-100">
             <div className="card-body">
               <h5>
                 {cardInfo.id} - {cardInfo.name}

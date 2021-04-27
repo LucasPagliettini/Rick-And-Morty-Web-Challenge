@@ -1,7 +1,11 @@
-import React from "react";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
+import { IWelcomeInfoItem } from "../../Apollo/Querys";
 
-const WellcomeModalCard = (props) => {
+const WelcomeModalCard = (props: {
+  cardInfo: IWelcomeInfoItem;
+  isOpen: boolean;
+  closeModal: any;
+}) => {
   const { cardInfo, isOpen, closeModal } = props;
 
   if (cardInfo === null) return <></>;
@@ -14,7 +18,9 @@ const WellcomeModalCard = (props) => {
             <h6>Episodes with participation:</h6>
             <div className="card-body">
               {cardInfo.episode.map((item) => (
-                <li key={item.id} className="mx-4">{item.name}</li>
+                <li key={item.id} className="mx-4">
+                  {item.name}
+                </li>
               ))}
             </div>
           </ModalBody>
@@ -23,4 +29,4 @@ const WellcomeModalCard = (props) => {
     );
 };
 
-export default WellcomeModalCard;
+export default WelcomeModalCard;

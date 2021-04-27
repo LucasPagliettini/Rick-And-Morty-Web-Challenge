@@ -1,11 +1,14 @@
-import React from "react";
+import { IWelcomeInfoItem } from "../../Apollo/Querys";
 
-const WellcomePageCharCard = (prop) => {
-  const { item, openModalCard } = prop;
+const WelcomePageCharCard = (props: {
+  item: IWelcomeInfoItem;
+  openModalCard: Function;
+}) => {
+  const { item, openModalCard } = props;
 
   return (
     <div key={item.id} className="col my-3">
-      <div className="card h-100" style={{ width: 100 + "%" }}>
+      <div className="card h-100">
         <img src={item.image} className="card-img-top" alt="..." />
         <div className="card-body">
           <h5 className="card-title">
@@ -21,7 +24,7 @@ const WellcomePageCharCard = (prop) => {
         <div className="text-center">
           <button
             type="button"
-            className="btn btn-primary mb-2"
+            className="btn btn-primary m-2"
             onClick={() => openModalCard(item)}
           >
             Episodes with Participation
@@ -32,4 +35,4 @@ const WellcomePageCharCard = (prop) => {
   );
 };
 
-export default WellcomePageCharCard;
+export default WelcomePageCharCard;
