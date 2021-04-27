@@ -40,7 +40,7 @@ You can also search to find specific information about a character, location or 
 ### Author
 Luas Pagliettini 2021
 
-Tryit on Netlify [lucaspagliettini-rick-and-morty-webchallenge.netlify.app](lucaspagliettini-rick-and-morty-webchallenge.netlify.app)
+Tryit on Netlify [https://lucaspagliettini-rick-and-morty-webchallenge.netlify.app/](https://lucaspagliettini-rick-and-morty-webchallenge.netlify.app/)
 
 Github Repository [https://github.com/Lucastini/Rick-And-Morty-Web-Challenge](https://github.com/Lucastini/Rick-And-Morty-Web-Challenge)
 
