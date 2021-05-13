@@ -81,8 +81,8 @@ interface IQueryResults {
 }
 
 /**
- * Function that returns de data and posible error of the diferent Querys depending on the state
- * of "Search Criterea" and "Search KeyWord"
+ * Function that returns de data and posible error of the diferent Querys 
+ * depending on the state of "Search Criterea" and "Search KeyWord"
  */
 export const GetQueryInfo = (
   nextPage: number | null,

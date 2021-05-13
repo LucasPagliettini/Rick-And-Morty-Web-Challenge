@@ -8,9 +8,8 @@ const WelcomeModalCard = (props: {
 }) => {
   const { cardInfo, isOpen, closeModal } = props;
 
-  if (cardInfo === null) return <></>;
-  else
-    return (
+  return (
+    cardInfo && (
       <div>
         <Modal size="md" isOpen={isOpen} toggle={closeModal}>
           <ModalHeader toggle={closeModal}>{cardInfo.name}</ModalHeader>
@@ -26,7 +25,8 @@ const WelcomeModalCard = (props: {
           </ModalBody>
         </Modal>
       </div>
-    );
+    )
+  );
 };
 
 export default WelcomeModalCard;

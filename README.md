@@ -1,8 +1,8 @@
 # Rick and Morty Challenge
 
-This is a web application where you find information about "Rick and Morty" serie. On the homepage you can scroll down and take a look at all of the characters whith the information about episodes in with you will find it.
+This is a web application where you find information about "Rick and Morty" serie. On the homepage you can scroll down and take a look at all of the characters with the information about episodes in which you will find them.
 
-You can also search to find specific information about a character, location or episode. The results are clickabe to get more details.
+You can also search specific information about a characters, locations or episodes. The results are clickabe to get more details.
 
 ## Screenshots
 

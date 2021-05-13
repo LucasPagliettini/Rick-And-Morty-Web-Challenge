@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./App.css";
 import HeadImage from "./Components/HeadImage";
 import SearchBar from "./Components/SearchBar";
 import Footer from "./Components/Footer";
@@ -13,9 +12,8 @@ export interface ISearchBarState {
 
 function App() {
   const initSearchBarState: ISearchBarState = { criterea: null, keyWord: "" };
-  const [searchBarState, setSearchBarState] = useState<ISearchBarState>(
-    initSearchBarState
-  );
+  const [searchBarState, setSearchBarState] =
+    useState<ISearchBarState>(initSearchBarState);
 
   return (
     <Router>

@@ -46,25 +46,29 @@ const CardGroup = (props: { searchBarState: ISearchBarState }) => {
   search again and show updated results. Instead, it will set searchKeyWord to an empty string (only once)
   waiting for the user to reach at least a 3 leters keyWord.
   */
-  if (
-    searchBarState.keyWord !== searchingDataState.keyWord &&
-    searchBarState.keyWord.length >= 3
-  ) {
-    setFetchData(initialData);
-    setSearchingDataState({
-      ...searchingDataState,
-      keyWord: searchBarState.keyWord,
-    });
-  } else if (
-    searchBarState.keyWord.length < 3 &&
-    searchingDataState.keyWord !== ""
-  ) {
-    setSearchingDataState({
-      ...searchingDataState,
-      keyWord: "",
-    });
-    setFetchData(initialData);
-  }
+  const updatingSearchingKeyWord = () => {
+    if (
+      searchBarState.keyWord !== searchingDataState.keyWord &&
+      searchBarState.keyWord.length >= 3
+    ) {
+      setFetchData(initialData);
+      setSearchingDataState({
+        ...searchingDataState,
+        keyWord: searchBarState.keyWord,
+      });
+    } else if (
+      searchBarState.keyWord.length < 3 &&
+      searchingDataState.keyWord !== ""
+    ) {
+      setSearchingDataState({
+        ...searchingDataState,
+        keyWord: "",
+      });
+      setFetchData(initialData);
+    }
+  };
+
+  updatingSearchingKeyWord();
 
   /*Fetchs data fron endpoint updating the results array and the fetchData "nextPage" propiety for
   the next fetch until there is no more pages (null page). The results array update method will
@@ -124,12 +128,12 @@ const CardGroup = (props: { searchBarState: ISearchBarState }) => {
     setModalData({ ...modalData, isOpen: true, cardInfo: item });
   };
 
-  /*Method that turn the "isOpen" modalData propiety into false and clean
-  the value of the Item info to show, setting it into null
-  */
+  /**Method that turn the "isOpen" modalData propiety into false and clean
+   * the value of the Item info to show, setting it into null
+   */
   const closeModal = () => {
     setModalData({ ...modalData, isOpen: false, cardInfo: null });
-  }
+  };
 
   if (error) {
     return <ErrorMessage error={error} />;
@@ -137,10 +141,14 @@ const CardGroup = (props: { searchBarState: ISearchBarState }) => {
 
   return (
     <>
-      <h1 className="text-center my-4">
-        {searchBarState.criterea === null ? "Meet the Characters" : fetchData.arrayResults.length>0 ? 
-        <h3>Click on them to see more details...</h3> : null}
-      </h1>
+      {searchBarState.criterea === null ? (
+        <h1 className="text-center my-4">Meet the Characters</h1>
+      ) : fetchData.arrayResults.length > 0 ? (
+        <h5 className="text-center my-3">
+          Click on them to see more details...
+        </h5>
+      ) : null}
+
       <InfiniteScroll
         dataLength={fetchData.arrayResults.length}
         next={() => {
