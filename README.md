@@ -42,6 +42,6 @@ Luas Pagliettini 2021
 
 Tryit on Netlify [https://lucaspagliettini-rick-and-morty-webchallenge.netlify.app/](https://lucaspagliettini-rick-and-morty-webchallenge.netlify.app/)
 
-Github Repository [https://github.com/Lucastini/Rick-And-Morty-Web-Challenge](https://github.com/Lucastini/Rick-And-Morty-Web-Challenge)
+
 
 
